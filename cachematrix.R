@@ -27,18 +27,18 @@ makeCacheMatrix <- function(x = matrix())
 ## If the inverse has already been calculated (and the matrix has not changed), 
 ## then cacheSolve should retrieve the inverse from the cache.
 ## This function assumes that the matrix is always invertible.
-# paramter to the function is the Matrix inverse of which to be calculated.
+# paramter to the function is the Matrix, inverse of which to be calculated.
 
 cacheSolve <- function(x,..)
 {
-   # Find in Vector in the list if inverse exists
+   # Find the Vector in the list if inverse exists
    inverse <-x$getinverse()
    if(!is.null(inverse))
 	{
 	  message("Inverse exists in Cache")
 	  return(inverse)
 	}
-  # if not found compute and store it.
+  # if not found compute and store it in the list.
    data <- x$get()
    inverse <- solve(data)
    x$setinverse(inverse)
